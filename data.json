@@ -1,0 +1,11 @@
+{
+  "updated": "2026-10-05",
+  "tagline": "Build Secure Mongolia",
+  "repos": [
+    { "name": "Tatar Kuber",     "slug": "Tatar-Kuber",     "icon": "kuber",  "clones": 964, "clones_g": 182, "cloners": 493, "cloners_g": 80, "views": 2442, "views_g": 194, "visitors": 340, "visitors_g": 5 },
+    { "name": "Tatar Kuber Lab", "slug": "Tatar-Kuber-Lab", "icon": "lab",    "clones": 310, "clones_g": 75,  "cloners": 214, "cloners_g": 41, "views": 276,  "views_g": 30,  "visitors": 75,  "visitors_g": 4 },
+    { "name": "Tatar Triage",    "slug": "Tatar-Triage",    "icon": "triage", "clones": 427, "clones_g": 87,  "cloners": 201, "cloners_g": 37, "views": 696,  "views_g": 129, "visitors": 70,  "visitors_g": 7 },
+    { "name": "Tatar Shield",    "slug": "Tatar-Shield",    "icon": "shield", "clones": 179, "clones_g": 47,  "cloners": 116, "cloners_g": 27, "views": 684,  "views_g": 96,  "visitors": 92,  "visitors_g": 8 },
+    { "name": "Tatar Relay",     "slug": "Tatar-Relay",     "icon": "relay",  "clones": 234, "clones_g": 130, "cloners": 124, "cloners_g": 62, "views": 555,  "views_g": 151, "visitors": 34,  "visitors_g": 11 }
+  ]
+}

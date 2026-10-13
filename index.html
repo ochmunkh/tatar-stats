@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tatar Projects — GitHub Repository Statistics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0f1e; --panel:#0f1830; --panel2:#111c38; --line:#1e2a4a;
+    --ink:#e8eefc; --muted:#8a97b4;
+    --blue:#38bdf8; --green:#34d399; --purple:#a78bfa; --orange:#fb923c; --up:#4ade80;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(1200px 600px at 80% -10%, #16223f 0%, var(--bg) 55%);
+       color:var(--ink);font-family:Inter,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+       -webkit-font-smoothing:antialiased;padding:28px 18px 40px}
+  .wrap{max-width:1180px;margin:0 auto}
+  /* header */
+  header{position:relative;overflow:hidden;padding:6px 2px 22px}
+  .mountains{position:absolute;top:-10px;right:-20px;width:min(560px,55%);opacity:.5;pointer-events:none}
+  .brand{display:flex;align-items:center;gap:16px}
+  .brand .logo{width:54px;height:54px;flex:none}
+  .brand h1{margin:0;font-size:46px;font-weight:900;letter-spacing:.5px;line-height:1}
+  .sub{margin:8px 0 0 70px;font-size:24px;font-weight:700;color:#cdd7ee}
+  .sub2{margin:6px 0 0 70px;color:var(--muted);font-size:15px}
+  .date{margin:14px 0 0 70px;color:var(--muted);font-size:14px;display:flex;align-items:center;gap:7px}
+  .tagline{position:absolute;top:26px;right:28px;font-family:Caveat,cursive;font-size:30px;line-height:1.05;
+           text-align:right;color:#bcd3ff;text-shadow:0 1px 8px rgba(80,140,255,.3)}
+  /* table card */
+  .card{background:linear-gradient(180deg,rgba(21,33,61,.9),rgba(13,22,44,.9));
+        border:1px solid var(--line);border-radius:18px;margin-top:22px;
+        box-shadow:0 20px 60px rgba(0,0,0,.35);overflow:hidden}
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:left;padding:18px 22px}
+  thead th{font-size:16px;font-weight:700;border-bottom:1px solid var(--line)}
+  .colhead{display:inline-flex;align-items:center;gap:10px}
+  .colhead .ic{width:26px;height:26px}
+  tbody td{border-bottom:1px solid rgba(30,42,74,.6);font-size:20px;font-weight:700;white-space:nowrap}
+  tbody tr:last-child td{border-bottom:none}
+  .proj{display:flex;align-items:center;gap:14px;font-size:20px;font-weight:700}
+  .proj .pic{width:34px;height:34px;flex:none}
+  .g{color:var(--up);font-size:15px;font-weight:700;margin-left:8px}
+  .num.blue{color:#eaf6ff}.num.green{color:#eafff6}.num.purple{color:#f3eeff}.num.orange{color:#fff1e6}
+  tr.total td{background:rgba(32,46,86,.5);font-size:22px;font-weight:800;border-top:1px solid var(--line)}
+  tr.total .tval{font-weight:900}
+  .t-blue{color:var(--blue)}.t-green{color:var(--green)}.t-purple{color:var(--purple)}.t-orange{color:var(--orange)}
+  /* summary cards */
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}
+  .scard{border-radius:16px;padding:18px 20px;border:1px solid var(--line);
+         background:linear-gradient(180deg,rgba(20,32,60,.7),rgba(12,20,40,.7));position:relative}
+  .scard .top{display:flex;align-items:center;gap:12px}
+  .scard .badge{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center}
+  .scard .lbl{font-size:14px;font-weight:700;color:var(--muted)}
+  .scard .big{font-size:40px;font-weight:900;margin:10px 0 6px;line-height:1}
+  .scard .grow{color:var(--up);font-weight:700;font-size:15px}
+  .scard .grow span{color:var(--muted);font-weight:600}
+  .b-blue{background:rgba(56,189,248,.14);border:1px solid rgba(56,189,248,.35)}
+  .b-green{background:rgba(52,211,153,.14);border:1px solid rgba(52,211,153,.35)}
+  .b-purple{background:rgba(167,139,250,.14);border:1px solid rgba(167,139,250,.35)}
+  .b-orange{background:rgba(251,146,60,.14);border:1px solid rgba(251,146,60,.35)}
+  .c-blue .big{color:var(--blue)}.c-green .big{color:var(--green)}.c-purple .big{color:var(--purple)}.c-orange .big{color:var(--orange)}
+  .c-blue{box-shadow:inset 0 0 0 1px rgba(56,189,248,.15)}
+  /* footer */
+  footer{margin-top:22px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+  footer .gh{display:flex;align-items:center;gap:8px;color:#cdd7ee;font-weight:700}
+  .note{max-width:720px;line-height:1.5}
+  a{color:var(--blue);text-decoration:none}
+  @media(max-width:860px){
+    .brand h1{font-size:34px}.sub{font-size:19px}.tagline{font-size:22px;top:10px;right:12px}
+    .cards{grid-template-columns:repeat(2,1fr)}
+    th,td{padding:12px 12px}tbody td{font-size:16px}.proj{font-size:15px;gap:9px}
+    .proj .pic{width:26px;height:26px}.num,.g{font-size:14px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <svg class="mountains" viewBox="0 0 560 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 240 L120 70 L180 130 L260 20 L340 120 L420 50 L560 200 L560 240 Z" fill="#1b2a4d"/>
+      <path d="M120 70 L150 110 L110 140 L95 115 Z" fill="#26406e" opacity=".8"/>
+      <path d="M260 20 L300 75 L240 95 L225 60 Z" fill="#2b4a80" opacity=".8"/>
+      <path d="M0 240 L90 150 L160 200 L250 120 L330 190 L430 110 L560 230 L560 240 Z" fill="#14203c"/>
+    </svg>
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 54 L24 20 L34 36 L44 18 L58 54 Z" fill="#38bdf8"/>
+        <path d="M24 20 L30 31 L20 38 Z" fill="#e8eefc" opacity=".9"/>
+        <path d="M44 18 L51 38 L38 40 Z" fill="#7dd3fc" opacity=".9"/>
+      </svg>
+      <h1>Tatar Projects</h1>
+    </div>
+    <div class="sub">GitHub Repository Statistics</div>
+    <div class="sub2">All-time snapshot with 14-day growth</div>
+    <div class="date">📅 <span id="updated">—</span></div>
+    <div class="tagline">Build<br>Secure<br>Mongolia</div>
+  </header>
+
+  <div class="card">
+    <table>
+      <thead><tr>
+        <th>Project</th>
+        <th><span class="colhead"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.8 1.8"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.8-1.8"/></svg><span class="t-blue">Clones</span></span></th>
+        <th><span class="colhead"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="t-green">Unique Cloners</span></span></th>
+        <th><span class="colhead"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg><span class="t-purple">Views</span></span></th>
+        <th><span class="colhead"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="t-orange">Unique Visitors</span></span></th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <div class="cards" id="cards"></div>
+
+  <footer>
+    <div class="note">ⓘ The "unique cloners" and "unique visitors" are summed per project and may include the same users across multiple projects. Use the all-time snapshot as the baseline for accurate growth comparison.</div>
+    <div class="gh">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#cdd7ee"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.57.1.78-.25.78-.55v-1.9c-3.2.7-3.87-1.54-3.87-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.47.11-3.07 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.5 3.17-1.18 3.17-1.18.63 1.6.23 2.77.11 3.07.75.81 1.2 1.84 1.2 3.1 0 4.43-2.7 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.2.66.79.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+      <span>Tatar Projects</span><span style="color:var(--muted);font-weight:500"> · Open Source · Security · Mongolia</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+const ICONS = {
+  kuber:'<svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 20 6.5V17L12 22 4 17V6.5z"/><path d="M12 2v20M4 6.5l8 4.5 8-4.5"/></svg>',
+  lab:'<svg viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6M10 2v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 17l-5-9V2"/><path d="M7 15h10"/></svg>',
+  triage:'<svg viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5z"/><path d="M12 8v4M12 16h.01"/></svg>',
+  shield:'<svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5z"/><path d="m13 8-4 5h3l-1 4 4-5h-3z" fill="#34d399" stroke="none"/></svg>',
+  relay:'<svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>'
+};
+const fmt = n => n.toLocaleString('en-US');
+const plus = n => (n>=0?'+':'') + fmt(n);
+
+const FALLBACK = {"updated":"2026-10-05","repos":[
+ {"name":"Tatar Kuber","icon":"kuber","clones":964,"clones_g":182,"cloners":493,"cloners_g":80,"views":2442,"views_g":194,"visitors":340,"visitors_g":5},
+ {"name":"Tatar Kuber Lab","icon":"lab","clones":310,"clones_g":75,"cloners":214,"cloners_g":41,"views":276,"views_g":30,"visitors":75,"visitors_g":4},
+ {"name":"Tatar Triage","icon":"triage","clones":427,"clones_g":87,"cloners":201,"cloners_g":37,"views":696,"views_g":129,"visitors":70,"visitors_g":7},
+ {"name":"Tatar Shield","icon":"shield","clones":179,"clones_g":47,"cloners":116,"cloners_g":27,"views":684,"views_g":96,"visitors":92,"visitors_g":8},
+ {"name":"Tatar Relay","icon":"relay","clones":234,"clones_g":130,"cloners":124,"cloners_g":62,"views":555,"views_g":151,"visitors":34,"visitors_g":11}]};
+
+function render(d){
+  document.getElementById('updated').textContent = 'Backup date: ' + d.updated;
+  let t = {clones:0,clones_g:0,cloners:0,cloners_g:0,views:0,views_g:0,visitors:0,visitors_g:0};
+  const rows = d.repos.map(r=>{
+    for(const k in t) t[k]+=r[k]||0;
+    return `<tr>
+      <td><div class="proj"><span class="pic">${ICONS[r.icon]||''}</span>${r.name}</div></td>
+      <td><span class="num blue">${fmt(r.clones)}</span><span class="g">(${plus(r.clones_g)})</span></td>
+      <td><span class="num green">${fmt(r.cloners)}</span><span class="g">(${plus(r.cloners_g)})</span></td>
+      <td><span class="num purple">${fmt(r.views)}</span><span class="g">(${plus(r.views_g)})</span></td>
+      <td><span class="num orange">${fmt(r.visitors)}</span><span class="g">(${plus(r.visitors_g)})</span></td>
+    </tr>`;
+  }).join('');
+  const totalRow = `<tr class="total">
+     <td><div class="proj"><svg class="pic" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="#38bdf8"/></svg>TOTAL</div></td>
+     <td class="tval t-blue">${fmt(t.clones)}</td><td class="tval t-green">${fmt(t.cloners)}</td>
+     <td class="tval t-purple">${fmt(t.views)}</td><td class="tval t-orange">${fmt(t.visitors)}</td></tr>`;
+  document.getElementById('rows').innerHTML = rows + totalRow;
+
+  const card = (cls,badge,icon,lbl,big,grow)=>`<div class="scard c-${cls}">
+     <div class="top"><div class="badge b-${cls}">${icon}</div><div class="lbl">${lbl}</div></div>
+     <div class="big">${fmt(big)}</div><div class="grow">▲ ${plus(grow)} <span>(vs. 14 days)</span></div></div>`;
+  document.getElementById('cards').innerHTML =
+    card('blue','', '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.8 1.8"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.8-1.8"/></svg>','Total Clones',t.clones,t.clones_g)
+   +card('green','', '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>','Unique Cloners',t.cloners,t.cloners_g)
+   +card('purple','', '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>','Total Views',t.views,t.views_g)
+   +card('orange','', '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>','Unique Visitors',t.visitors,t.visitors_g);
+}
+
+render(FALLBACK); // show immediately; overwritten by live data.json when available
+fetch('data.json?_=' + Date.now()).then(r=>r.json()).then(render).catch(()=>{});
+</script>
+</body>
+</html>
