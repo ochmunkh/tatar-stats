@@ -26,7 +26,7 @@ jobs:
 
       - name: Collect traffic stats
         env:
-          STATS_TOKEN: ${{ secrets.STATS_TOKEN }}
+          STATS_TOKEN: ${{ secrets.TATAR_STATS }}
         run: python collect.py
 
       - name: Commit updated data
@@ -40,3 +40,4 @@ jobs:
             git commit -m "chore: update stats ($(date -u +%Y-%m-%d))"
             git push
           fi
+
