@@ -39,7 +39,9 @@
   .colhead .ic{width:26px;height:26px}
   tbody td{border-bottom:1px solid rgba(30,42,74,.6);font-size:20px;font-weight:700;white-space:nowrap}
   tbody tr:last-child td{border-bottom:none}
-  .proj{display:flex;align-items:center;gap:14px;font-size:20px;font-weight:700}
+  .proj{display:flex;align-items:center;gap:14px;font-size:20px;font-weight:700;color:var(--ink);text-decoration:none;transition:color .15s}
+  a.proj .ext{width:15px;height:15px;opacity:0;color:var(--blue);transition:opacity .15s}
+  a.proj:hover{color:var(--blue)} a.proj:hover .ext{opacity:1} a.proj:hover .pic{filter:brightness(1.25)}
   .proj .pic{width:34px;height:34px;flex:none}
   .g{color:var(--up);font-size:15px;font-weight:700;margin-left:8px}
   .num.blue{color:#eaf6ff}.num.green{color:#eafff6}.num.purple{color:#f3eeff}.num.orange{color:#fff1e6}
@@ -146,7 +148,7 @@ function render(d){
   const rows = d.repos.map(r=>{
     for(const k in t) t[k]+=r[k]||0;
     return `<tr>
-      <td><div class="proj"><span class="pic">${ICONS[r.icon]||''}</span>${r.name}</div></td>
+      <td><a class="proj" href="https://github.com/ochmunkh/${r.slug||r.name.replace(/ /g,'-')}" target="_blank" rel="noopener"><span class="pic">${ICONS[r.icon]||''}</span>${r.name}<svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></td>
       <td><span class="num blue">${fmt(r.clones)}</span><span class="g">(${plus(r.clones_g)})</span></td>
       <td><span class="num green">${fmt(r.cloners)}</span><span class="g">(${plus(r.cloners_g)})</span></td>
       <td><span class="num purple">${fmt(r.views)}</span><span class="g">(${plus(r.views_g)})</span></td>
