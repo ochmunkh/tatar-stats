@@ -1,71 +1,71 @@
 {
-  "updated": "2026-11-02",
+  "updated": "2026-11-09",
   "tagline": "Build Secure Mongolia",
   "repos": [
     {
       "name": "Tatar Kuber",
       "slug": "Tatar-Kuber",
       "icon": "kuber",
-      "clones": 1388,
-      "clones_g": 195,
-      "cloners": 673,
-      "cloners_g": 79,
-      "views": 2573,
-      "views_g": 78,
-      "visitors": 370,
-      "visitors_g": 15
+      "clones": 1439,
+      "clones_g": 170,
+      "cloners": 692,
+      "cloners_g": 63,
+      "views": 2596,
+      "views_g": 64,
+      "visitors": 380,
+      "visitors_g": 19
     },
     {
       "name": "Tatar Kuber Lab",
       "slug": "Tatar-Kuber-Lab",
       "icon": "lab",
-      "clones": 393,
-      "clones_g": 13,
-      "cloners": 263,
-      "cloners_g": 11,
-      "views": 321,
-      "views_g": 22,
-      "visitors": 93,
-      "visitors_g": 10
+      "clones": 395,
+      "clones_g": 7,
+      "cloners": 265,
+      "cloners_g": 7,
+      "views": 322,
+      "views_g": 10,
+      "visitors": 94,
+      "visitors_g": 7
     },
     {
       "name": "Tatar Triage",
       "slug": "Tatar-Triage",
       "icon": "triage",
-      "clones": 708,
-      "clones_g": 172,
-      "cloners": 311,
-      "cloners_g": 71,
-      "views": 848,
-      "views_g": 116,
-      "visitors": 97,
-      "visitors_g": 15
+      "clones": 772,
+      "clones_g": 186,
+      "cloners": 331,
+      "cloners_g": 66,
+      "views": 876,
+      "views_g": 113,
+      "visitors": 106,
+      "visitors_g": 21
     },
     {
       "name": "Tatar Shield",
       "slug": "Tatar-Shield",
       "icon": "shield",
-      "clones": 228,
+      "clones": 233,
       "clones_g": 41,
-      "cloners": 148,
+      "cloners": 153,
       "cloners_g": 24,
       "views": 735,
-      "views_g": 39,
+      "views_g": 28,
       "visitors": 104,
-      "visitors_g": 7
+      "visitors_g": 4
     },
     {
       "name": "Tatar Relay",
       "slug": "Tatar-Relay",
       "icon": "relay",
-      "clones": 382,
-      "clones_g": 26,
-      "cloners": 199,
-      "cloners_g": 16,
-      "views": 675,
-      "views_g": 77,
-      "visitors": 61,
-      "visitors_g": 14
+      "clones": 385,
+      "clones_g": 6,
+      "cloners": 202,
+      "cloners_g": 5,
+      "views": 695,
+      "views_g": 60,
+      "visitors": 68,
+      "visitors_g": 16
     }
   ]
 }
